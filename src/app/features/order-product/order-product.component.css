@@ -1,0 +1,71 @@
+.cta .cta-order-product-inner {
+    position: relative;
+    padding: 1rem;
+    margin: .5rem;
+}
+
+.cta-order-product-light-border {
+
+    border: .25rem solid rgba(255, 255, 255, .85);
+    padding: 1rem;
+}
+.cta-order-product-solid-border {
+
+    border: .25rem solid rgba(255, 255, 255, .85);
+    padding: 0.25rem;
+}
+.cta-order-product-solid-background {
+    background-color: rgba(255, 255, 255, .85);
+    border: .25rem solid rgba(255, 255, 255, .85);
+    padding: 1rem;
+}
+
+.cta .cta-order-product-inner:before {
+    border-radius: .5rem;
+    /* content: ''; */
+    position: absolute;
+    top: -.5rem;
+    bottom: -.5rem;
+    left: -.5rem;
+    right: -.5rem;
+    border: .25rem solid rgba(255, 255, 255, .85)
+}
+
+.list-order-product-items .list-order-product-items-item {
+    border-bottom: 1px solid rgba(230, 167, 86, .5);
+    padding-bottom: .25rem;
+    margin-bottom: 1rem;
+}
+
+.list-beverage-item-desc {
+    width: 100%;
+}
+
+.list-sale-item-desc {
+    width: 100%;
+    font-style: normal;
+}
+
+.list-order-product-items .list-order-product-items-item .item-price {
+    font-style: normal;
+}
+
+.selectedItem {
+    /* background-color: #368b4b; */
+    border: 3px solid #368b4b !important;
+}
+
+.condiment-div {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.disabled {
+    pointer-events: none;
+    cursor: default;
+}
+
+.btn-primary.disabled {
+    background-color: #e6a756;
+    border-color: #e6a756;
+}

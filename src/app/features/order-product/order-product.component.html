@@ -1,0 +1,138 @@
+<section class="page-section cta row">
+
+  <!-- Show current sales -->
+  <div class="col-md-4" style="margin-bottom: 10px;">
+      <div class="container">
+          <div class="row">
+              <div class="col-xl-12 mx-auto">
+                  <div class="cta-order-product-solid-border rounded">
+                 <div class="cta-order-product-solid-background rounded text-center">
+                    <h2 style="text-transform: uppercase;">Current sales</h2>
+                    <br/>
+                    <h4 *ngIf="sales == 0">No sales today</h4>
+                    <ul class="list-unstyled list-order-product-items mb-5 text-center mx-auto">
+                        <li *ngFor="let sale of sales" class="list-unstyled-item list-order-product-items-item d-flex" >
+                          <div class="list-sale-item-desc text-center">
+                            <strong>{{sale.name}}</strong>
+                            <br>
+                            <em>
+                              {{sale.description}}
+                            </em>
+                          </div>
+                        </li> 
+                      </ul>
+                  </div>
+                </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <!-- Add to order -->
+  <div class="col-md-4" style="margin-bottom: 10px;">
+    <div class="container">
+      <!-- Choosing a beverage type -->
+      <div class="row">
+
+        <div *ngIf="beverageCategories == 0" class="col-md-12"  style="margin-bottom: 10px;">
+          <div class="cta-order-product-light-border rounded text-center">
+            <h3>We are fresh out of beverages</h3>
+          </div>
+        </div>
+
+        <div *ngFor="let category of beverageCategories" class="col-lg-6 col-md-12"  style="margin-bottom: 10px;">
+          <div class="cta-order-product-light-border rounded text-center">
+            <h3>{{category.name}}</h3>
+            <img [src]="category.name | beverageCategoryImage" style="max-width: 100%;" width="100%" />
+            <br/>
+            <br/>
+            <button type="button" class="btn btn-primary" [class.selectedItem]="selectedCategory == category" [class.disabled]="selectedBeverage"
+              (click)="onBeverageCategorySelect(category)">Choose</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br/>
+
+    <!-- Choosing a beverage -->
+    <div class="row">
+      <div *ngIf="selectedBeverages && selectedBeverages.length > 0" class="col-md-12">
+        <div class="cta-order-product-solid-border rounded">
+          <div class="cta-order-product-solid-background rounded text-center">
+
+            <!-- List of beverages -->
+            <h2 class="section-heading mb-5">
+              <span class="section-heading-upper">Our {{selectedCategory.name}} selection</span>
+            </h2>
+            <ul class="list-unstyled list-order-product-items mb-5 text-left mx-auto list-group">
+              <li *ngFor="let beverage of selectedBeverages" class="list-order-product-items-item d-flex list-group-item" 
+              [class.selectedItem]="selectedBeverage == beverage" [class.disabled]="selectedBeverage" (click)="onBeverageSelect(beverage)">
+                {{beverage.name}}
+                <span class="ml-auto">{{beverage.price | currency:'kr. ': 'code'}}</span>
+              </li>
+            </ul>
+
+            <!-- List of condiments -->
+            <div *ngIf="selectedBeverage">
+              <h2 class="section-heading mb-5">
+                <span class="section-heading-upper">Add condiments</span>
+              </h2>
+              <div class="d-flex flex-wrap justify-content-center">
+                <button type="button" style="margin-left:10px;margin-right:10px;margin-bottom:10px;" *ngFor="let condiment of condiments" 
+                  class="col-md btn btn-primary selectedItem">{{condiment.description}}, {{condiment.price | currency:'kr. ': 'code'}}</button>
+              </div>
+              <br/><br/>
+            
+              <button type="button" class="btn btn-primary">Add another beverage</button>
+            </div>  
+        </div>
+      </div>
+    </div>
+  </div> 
+ </div>
+
+  <!-- Show current order -->
+  <div class="col-md-4" style="margin-bottom: 10px;">
+    <div class="container">
+      <div class="row">
+        <div class="col-xl-12 mx-auto">
+          <div class="cta-order-product-solid-border rounded">
+            <div class="cta-order-product-solid-background rounded text-center">
+              <h2 class="section-heading mb-5">
+                <span class="section-heading-upper">{{currentOrder.orderDate | date }}</span>
+                <span class="section-heading-lower">Your order</span>
+              </h2>
+              <div *ngIf="currentOrder.orderItems && currentOrder.orderItems > 0">
+                <ul class="list-unstyled list-order-product-items mb-5 text-center mx-auto">
+                  <li *ngFor="let orderitem of currentOrder.orderItems" class="list-unstyled-item list-order-product-items-item d-flex" >
+                    <div class="list-beverage-item-desc text-left">
+                      {{orderitem.description}}<br/><br/>
+                      <div class="ml-auto item-price text-right">{{orderitem.unitprice | currency:'kr. ': 'code'}}</div> 
+                    </div>
+                    <div (click)="test();"><i class="fas fa-trash-alt"></i></div>
+                  </li> 
+                </ul>
+                <p class="total-price mb-5">
+                  <em>
+                    <strong>Total price: </strong>
+                  </em>
+                </p>
+                <p *ngIf="order.complete == true" class="mb-0">
+                  <small>
+                    <em>Thank you for ordering from us.</em>
+                  </small>
+                  <br/>
+                  Have a good day ahead.
+                </p>
+                <button *ngIf="order.complete == false" class="btn btn-primary" type="button">Order</button>
+                <br/>
+                <button *ngIf="order.complete == true" class="btn btn-primary" type="button">Start a new order</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+</section>
