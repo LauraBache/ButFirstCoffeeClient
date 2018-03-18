@@ -34,7 +34,7 @@
       <!-- Choosing a beverage type -->
       <div class="row">
 
-        <div *ngIf="(currentOrder && currentOrder.completed == false || currentOrder == false) && beverageCategories && beverageCategories.length == 0"
+        <div *ngIf="(currentOrder && currentOrder.completed == false || currentOrder == undefined) && beverageCategories && beverageCategories.length == 0"
           class="col-md-12"  style="margin-bottom: 10px;">
           <div class="cta-order-product-light-border rounded text-center">
             <h3>We are fresh out of beverages</h3>
@@ -142,5 +142,4 @@
       </div>
     </div> 
   </div>
-  <pre>{{currentOrder | json}}</pre>
 </section>
