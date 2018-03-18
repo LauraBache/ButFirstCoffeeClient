@@ -10,15 +10,16 @@ import { BaseService } from "./base.service";
 @Injectable()
 export class SaleService extends BaseService {
 
-    constructor (private http: HttpClient) {
-      super(http);
-    }
+  private salesUrl = environment.api + '/api/sales'; // URL to web api
 
-    getSales(): Observable<Sale[]> {
+  constructor (private http: HttpClient) {
+    super(http);
+  }
 
-      return this.http.get<Sale[]>(environment.api + '/api/sales')
-        .pipe(
-          catchError(this.handleError('getSales', []))
-        );
-    }
+  getSales(): Observable<Sale[]> {
+    return this.http.get<Sale[]>(this.salesUrl)
+      .pipe(
+        catchError(this.handleError('getSales', []))
+      );
+  }
 }

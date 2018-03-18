@@ -1,3 +1,4 @@
+
 body {
     font-family: Lora;
     background: linear-gradient(rgba(47, 23, 15, .65), rgba(47, 23, 15, .65)), url(assets/img/bg.jpg);
@@ -248,4 +249,8 @@ p {
 
 .font-weight-light {
     font-weight: 100!important
+}
+
+.test{
+    
 }

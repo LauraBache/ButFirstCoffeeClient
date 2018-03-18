@@ -1,5 +1,5 @@
 export class Condiment {
-    id: number;
+    condimentId: number;
     description: string;
     price: number;
 }

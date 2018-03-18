@@ -14,9 +14,11 @@ import { BeverageCategoryImagePipe } from './pipes/beverage-category-image.pipe'
 import { SaleService } from './features/order-product/services/sale.service';
 import { BeverageCategoryService } from './features/order-product/services/beverage-category.service';
 import { BeverageService } from './features/order-product/services/beverage.service';
-import { Beverage } from './features/order-product/models/beverage';
+import { CondimentService } from './features/order-product/services/condiment.service';
+import { OrderService } from './features/order-product/services/order.service';
+import { OrderItemService } from './features/order-product/services/order-item.service';
 
-let homeState = { name: 'home', url: '/',  component: HomeComponent }; 
+let homeState = { name: 'home', url: '',  component: HomeComponent }; 
 let aboutState = { name: 'about', url: '/about',  component: AboutComponent };
 let orderProductState = { name: 'orderproduct', url: '/order-product', component: OrderProductComponent };
 
@@ -35,7 +37,7 @@ let orderProductState = { name: 'orderproduct', url: '/order-product', component
     // import HttpModule after BrowserModule
     HttpClientModule,
   ],
-  providers: [SaleService, BeverageCategoryService, BeverageService],
+  providers: [SaleService, BeverageCategoryService, BeverageService, CondimentService, OrderService, OrderItemService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

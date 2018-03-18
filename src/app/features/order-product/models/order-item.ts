@@ -3,6 +3,6 @@ export class OrderItem {
     beverageId: number;
     description: string;
     quantity: number;
-    unitprice: number;
+    unitPrice: number;
     orderId: number;
 }

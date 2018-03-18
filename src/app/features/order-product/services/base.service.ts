@@ -6,7 +6,7 @@ import { catchError } from 'rxjs/operators';
 // @Injectable()
 export class BaseService {
 
-    constructor (http: HttpClient) {}
+  constructor (http: HttpClient) {}
 
   /**
    * Handle Http operation that failed.
@@ -16,8 +16,8 @@ export class BaseService {
    */
   handleError<T>(operation = 'operation', result?: T) {
     return (error: Error): Observable<T> => {
-      // TODO: send the error to remote logging infrastructure
-      console.error(operation + ' failed: ' + error.name + ' | ' + error.message); // log to console instead
+      
+      console.error(operation + ' failed: ' + error.name + ' | ' + error.message);
 
       // Let the app keep running by returning an empty result.
       return of(result as T);

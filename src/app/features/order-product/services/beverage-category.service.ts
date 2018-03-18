@@ -10,16 +10,18 @@ import { BaseService } from "./base.service";
 @Injectable()
 export class BeverageCategoryService extends BaseService {
 
-    constructor (private http: HttpClient) {
-      super(http);
-    }
+  private beverageCategoryUrl = environment.api + '/api/beveragecategories'; // URL to web api
 
-    getBeverageCategories(): Observable<BeverageCategory[]> {
+  constructor (private http: HttpClient) {
+    super(http);
+  }
 
-      return this.http.get<BeverageCategory[]>(environment.api + '/api/beveragecategories')
-        .pipe(
-          catchError(this.handleError('geteverageCategories', []))
-        );
-    }
+  getBeverageCategories(): Observable<BeverageCategory[]> {
+
+    return this.http.get<BeverageCategory[]>(this.beverageCategoryUrl)
+      .pipe(
+        catchError(this.handleError('geteverageCategories', []))
+      );
+  }
 }
 
